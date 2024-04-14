@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SummonData" load_steps=4 format=3 uid="uid://bpyjuaap5568o"]
+
+[ext_resource type="Script" path="res://gui/skills/summon_data.gd" id="1_3o71l"]
+[ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="1_hxfbi"]
+[ext_resource type="PackedScene" uid="uid://bjbxg4kui8ela" path="res://models/wind_dragon.tscn" id="2_eiuwl"]
+
+[resource]
+script = ExtResource("1_3o71l")
+icon = ExtResource("1_hxfbi")
+name = "Wind Dragon"
+description = ""
+model = ExtResource("2_eiuwl")
+summoning_range = 15
+lifespan = 1
+effect_range = 0

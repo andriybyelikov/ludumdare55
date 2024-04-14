@@ -11,6 +11,9 @@ albedo_color = Color(0, 0.313726, 1, 1)
 
 [node name="Summoner" type="CharacterBody3D"]
 script = ExtResource("1_4buju")
+speed = null
+fall_acceleration = null
+jump_impulse = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 1.75, 0)
