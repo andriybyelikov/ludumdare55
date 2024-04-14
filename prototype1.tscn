@@ -15,11 +15,6 @@ light_color = Color(0.752941, 0.878431, 1, 1)
 light_energy = 2.0
 light_indirect_energy = 2.0
 
-[node name="Background" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, -8.74228e-08, -20, 0, 2, -8.74228e-07, 0, 0, -4)
-mesh = SubResource("PlaneMesh_01m3q")
-surface_material_override/0 = SubResource("StandardMaterial3D_di5b3")
-
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_jgqxr")
 cell_size = Vector3(4, 4, 4)
@@ -28,8 +23,14 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -1, -1)
 
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, -8.74228e-08, -20, 0, 2, -8.74228e-07, 0, 0, -4)
+mesh = SubResource("PlaneMesh_01m3q")
+surface_material_override/0 = SubResource("StandardMaterial3D_di5b3")
+
 [node name="Summoner" parent="." instance=ExtResource("2_aus0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
+speed = 20
 
 [node name="Camera3D" type="Camera3D" parent="Summoner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 20)
