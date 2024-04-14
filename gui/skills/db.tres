@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SummonDataDB" load_steps=4 format=3 uid="uid://bjvq05vm5pyxw"]
+
+[ext_resource type="Script" path="res://gui/skills/summon_db.gd" id="1_3je44"]
+[ext_resource type="Resource" uid="uid://bpyjuaap5568o" path="res://gui/skills/dragon_wind_breath.tres" id="2_h2ndk"]
+[ext_resource type="Resource" uid="uid://bitf8lqvn5ay1" path="res://gui/skills/ufo_teleport.tres" id="3_83vjv"]
+
+[resource]
+script = ExtResource("1_3je44")
+summon_db = Array[Resource("res://gui/skills/summon_data.gd")]([ExtResource("2_h2ndk"), ExtResource("3_83vjv")])

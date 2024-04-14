@@ -1,14 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvsc4wc2unvfu"]
+[gd_scene load_steps=14 format=3 uid="uid://cvsc4wc2unvfu"]
 
-[ext_resource type="MeshLibrary" uid="uid://cmx3y1t5dfvww" path="res://mesh_library.tres" id="1_jgqxr"]
 [ext_resource type="Script" path="res://prototype1.gd" id="1_lysoa"]
-[ext_resource type="Resource" uid="uid://bpyjuaap5568o" path="res://gui/skills/dragon_wind_breath.tres" id="2_7hlo6"]
 [ext_resource type="PackedScene" uid="uid://bymi4apke5ok2" path="res://summoner.tscn" id="2_aus0f"]
-[ext_resource type="Resource" uid="uid://bitf8lqvn5ay1" path="res://gui/skills/ufo_teleport.tres" id="3_2tiqw"]
 [ext_resource type="PackedScene" uid="uid://nag40h0wl7bi" path="res://gui/cards_gui.tscn" id="3_lqiq1"]
 [ext_resource type="Texture2D" uid="uid://cqdg2ghfcou0r" path="res://textures/cast_range.tres" id="7_bcw7p"]
 [ext_resource type="AudioStream" uid="uid://r2vkwhuvmmih" path="res://music/Contra musas privo boni [oHLkwJ0JNe8].ogg" id="7_vpx5b"]
 [ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="8_mgnd2"]
+[ext_resource type="PackedScene" uid="uid://cd6fewubr8ufc" path="res://levels/level1.tscn" id="9_cdyk1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_01m3q"]
 
@@ -29,33 +27,15 @@ albedo_texture = ExtResource("7_bcw7p")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uv1e"]
 albedo_color = Color(0.882353, 0, 0.466667, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yjs62"]
-size = Vector3(4, 1, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ipws0"]
-size = Vector3(4, 1, 4)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsioe"]
-transparency = 1
-albedo_color = Color(0.780392, 0, 0.156863, 0.454902)
-
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-skill_db = Array[Resource("res://gui/skills/summon_data.gd")]([ExtResource("2_7hlo6"), ExtResource("3_2tiqw")])
+levels = Array[PackedScene]([ExtResource("9_cdyk1")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 10, 5)
 light_color = Color(0.752941, 0.878431, 1, 1)
 light_energy = 2.0
 light_indirect_energy = 2.0
-
-[node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("1_jgqxr")
-cell_size = Vector3(4, 4, 4)
-data = {
-"cells": PackedInt32Array(65533, 65535, 0, 65532, 65535, 0, 65531, 65535, 0, 65530, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 6, 65535, 0, 7, 65535, 0, 65543, 65535, 0, 65541, 65535, 0, 65542, 65535, 0, 131077, 65535, 0, 131078, 65535, 0, 131079, 65535, 0, 131080, 65535, 0, 65544, 65535, 0, 8, 65535, 0, 9, 65535, 0, 65545, 65535, 0, 131081, 65535, 0, 131083, 65535, 0, 131082, 65535, 0, 65546, 65535, 0, 10, 65535, 0, 11, 65535, 0, 65547, 65535, 0, 196619, 65535, 0, 196618, 65535, 0, 196617, 65535, 0, 196616, 65535, 0, 196615, 65535, 0, 196614, 65535, 0, 196613, 65535, 0, 65529, 65535, 0, 131065, 65535, 0, 196601, 65535, 0, 262137, 65535, 0, 327673, 65535, 0, 393209, 65535, 0, 458745, 65535, 0)
-}
-metadata/_editor_floor_ = Vector3(0, 1, -1)
 
 [node name="Background" type="MeshInstance3D" parent="."]
 transform = Transform3D(210, 0, 0, 0, -9.17939e-06, -210, 0, 210, -9.17939e-06, 0, 0, -4)
@@ -90,28 +70,9 @@ offset_bottom = -1.0
 mesh = SubResource("SphereMesh_760g6")
 surface_material_override/0 = SubResource("StandardMaterial3D_4uv1e")
 
-[node name="Summons" type="Node3D" parent="."]
-unique_name_in_owner = true
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_vpx5b")
 volume_db = -15.445
 autoplay = true
 
-[node name="StartPosition" type="Marker3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 4, -2)
-
-[node name="Goal" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1497, 16.4876, -2)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
-shape = SubResource("BoxShape3D_yjs62")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Goal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.185608, 0, 0)
-mesh = SubResource("BoxMesh_ipws0")
-surface_material_override/0 = SubResource("StandardMaterial3D_jsioe")
-
 [connection signal="card_clicked" from="gui_layer/SummoningGUI" to="." method="_on_cards_gui_card_clicked"]
-[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

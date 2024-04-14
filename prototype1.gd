@@ -1,9 +1,11 @@
 extends Node
 
-@export var skill_db: Array[SummonData] = []
-@export var deck_count: int = 10
-@export var hand_count: int = 3
+@export var levels: Array[PackedScene] = []
 
+@export var deck_count: int = 3
+@export var hand_count: int = 3
+var current_level: int = -1
+var level: Node3D
 
 var summoner: CharacterBody3D
 
@@ -22,7 +24,6 @@ func _ready():
     summon_gui = get_node("%SummoningGUI")
     cast_range = get_node("%CastRange")
     camera = get_node("%Camera3D")
-    summons = get_node("%Summons")
     summoner = get_node("Summoner")
 
     cast_range.hide()
@@ -30,9 +31,20 @@ func _ready():
 
 
 func init_level():
-    summoner.position = get_node("%StartPosition").position
+    skill_hand.clear()
+    skill_deck.clear()
+
+    current_level = (current_level + 1) % levels.size()
+    level = levels[current_level].instantiate()
+    self.add_child(level)
+
+    summons = level.get_node("%Summons")
+    summoner.position = level.get_node("%StartPosition").position
+    var goal = level.get_node("%Goal")
+    goal.body_entered.connect(_on_goal_body_entered.bind())
+
     for i in range(deck_count):
-        skill_deck.append(skill_db.pick_random())
+        skill_deck.append(level.skill_db.pick_random())
 
     for i in range(hand_count):
         var new_skill: SummonData = skill_deck.pop_back()
@@ -48,11 +60,9 @@ func _on_cards_gui_card_clicked(p_which_skill: int):
     show_summon_area()
 
 
-func refill_card():
+func try_refill_hand():
     skill_hand.pop_at(self.current_clicked)
-    if skill_deck.size() == 0:
-        hand_count -= 1
-    else:
+    if skill_deck.size() > 0:
         var new_summon_skill: SummonData = skill_deck.pop_back()
         skill_hand.push_back(new_summon_skill)
 
@@ -80,27 +90,36 @@ func do_summoning(p_position: Vector3):
 func spawn_ufo(p_position: Vector3):
     summoner.position = p_position
 
+func _is_valid_summon_position(p_position: Vector3):
+    var summoning_radius: int = summoning.summoning_range
+    var spawn_position = cast_range.global_position
+    spawn_position.z -= 2.0
+    var valid_summon_position = p_position.distance_to(spawn_position) <= summoning_radius
+    return valid_summon_position
+
+
+func _unhandled_input(event):
+    if event is InputEventMouseButton and summoning:
+        var current_position: Vector2 = get_viewport().get_mouse_position()
+        var world_position = camera.project_position(current_position, camera.position.z)
+
+        if Input.is_action_just_pressed("confirm") and _is_valid_summon_position(world_position):
+            cast_range.hide()
+            do_summoning(world_position)
+            try_refill_hand()
+
 
 func _process(_delta):
     if summoning:
         var current_position: Vector2 = get_viewport().get_mouse_position()
-        var world_position: Vector3 = camera.project_position(current_position, camera.position.z)
-        print(world_position)
+        var world_position = camera.project_position(current_position, camera.position.z)
         get_node("aa").position = world_position
-
-        var summoning_radius: int = summoning.summoning_range
-
-        var spawn_position = cast_range.global_position
-        spawn_position.z -= 2.0
-        var valid_position: bool = world_position.distance_to(spawn_position) <= summoning_radius
-        if Input.is_action_just_pressed("confirm") and valid_position:
-            cast_range.hide()
-            do_summoning(world_position)
-            refill_card()
 
 
 func _on_goal_body_entered(body:Node3D):
     if body.name == "Summoner":
         print("You Win!")
+        level.queue_free()
+        init_level()
         # get_tree().change_scene("res://scenes/Level.tscn")
 
