@@ -6,8 +6,12 @@ extends CharacterBody3D
 
 var target_velocity: Vector3 = Vector3.ZERO
 
+var fixed_z: float = 0
+func _ready():
+    fixed_z = self.position.z
 
 func _physics_process(delta):
+    self.position.z = fixed_z
     var l: int = Input.is_action_pressed("move_left")
     var r: int = Input.is_action_pressed("move_right")
     var direction: Vector3 = Vector3(r - l, 0, 0)
