@@ -14,13 +14,15 @@
 albedo_texture = ExtResource("8_mgnd2")
 uv1_scale = Vector3(100, 100, 100)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ya6xf"]
-size = Vector2(1, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gpiv"]
 transparency = 1
 no_depth_test = true
+albedo_color = Color(0.65098, 0.686275, 0.701961, 1)
 albedo_texture = ExtResource("7_bcw7p")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ya6xf"]
+material = SubResource("StandardMaterial3D_7gpiv")
+size = Vector2(1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_760g6"]
 
@@ -45,10 +47,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_di5b3")
 [node name="Summoner" parent="." instance=ExtResource("2_aus0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
 speed = 20
+fall_acceleration = 75
+jump_impulse = 20
 
 [node name="Camera3D" type="Camera3D" parent="Summoner"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 20)
+current = true
 
 [node name="PlayerAnchor" type="Node3D" parent="Summoner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14144, 0)
@@ -57,7 +62,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14144, 0)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ya6xf")
-surface_material_override/0 = SubResource("StandardMaterial3D_7gpiv")
 
 [node name="gui_layer" type="CanvasLayer" parent="."]
 
@@ -74,5 +78,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4uv1e")
 stream = ExtResource("7_vpx5b")
 volume_db = -15.445
 autoplay = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+target_position = Vector3(34.795, 30, 0)
+collision_mask = 2
+debug_shape_custom_color = Color(0.780392, 0, 0.454902, 1)
+debug_shape_thickness = 5
 
 [connection signal="card_clicked" from="gui_layer/SummoningGUI" to="." method="_on_cards_gui_card_clicked"]

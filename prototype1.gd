@@ -20,11 +20,13 @@ var skill_hand: Array[SummonData] = []
 
 var summoning: SummonData
 var current_clicked: int
+var raycast: RayCast3D
 func _ready():
     summon_gui = get_node("%SummoningGUI")
     cast_range = get_node("%CastRange")
     camera = get_node("%Camera3D")
     summoner = get_node("Summoner")
+    raycast = get_node("%RayCast3D")
 
     cast_range.hide()
     init_level()
@@ -90,22 +92,33 @@ func do_summoning(p_position: Vector3):
 func spawn_ufo(p_position: Vector3):
     summoner.position = p_position
 
+func _click_terrain_collision(p_position: Vector3):
+    raycast.global_position = camera.global_position
+    # raycast.global_position.z *= -1 // So that does not block view for debugging
+    raycast.target_position = p_position-raycast.global_position
+    return raycast.is_colliding()
+
+func _player_terrain_collision(p_position: Vector3):
+    raycast.global_position = summoner.global_position
+    raycast.target_position = p_position-raycast.global_position
+    return raycast.is_colliding()
+
+
 func _is_valid_summon_position(p_position: Vector3):
     var summoning_radius: int = summoning.summoning_range
     var spawn_position = cast_range.global_position
-    spawn_position.z -= 2.0
-    var valid_summon_position = p_position.distance_to(spawn_position) <= summoning_radius
-    return valid_summon_position
+    var within_spawn_radius: bool = p_position.distance_to(spawn_position) <= summoning_radius
+    return within_spawn_radius and not _click_terrain_collision(p_position)
 
 
 func _unhandled_input(event):
     if event is InputEventMouseButton and summoning:
-        var current_position: Vector2 = get_viewport().get_mouse_position()
-        var world_position = camera.project_position(current_position, camera.position.z)
+        var mouse_position: Vector2 = get_viewport().get_mouse_position()
+        var mouse_world_position = camera.project_position(mouse_position, camera.position.z)
 
-        if Input.is_action_just_pressed("confirm") and _is_valid_summon_position(world_position):
+        if Input.is_action_just_pressed("confirm") and _is_valid_summon_position(mouse_world_position):
             cast_range.hide()
-            do_summoning(world_position)
+            do_summoning(mouse_world_position)
             try_refill_hand()
 
 
@@ -114,6 +127,12 @@ func _process(_delta):
         var current_position: Vector2 = get_viewport().get_mouse_position()
         var world_position = camera.project_position(current_position, camera.position.z)
         get_node("aa").position = world_position
+        var material = cast_range.mesh.surface_get_material(0)
+        if _is_valid_summon_position(world_position):
+            material.albedo_color = Color(1, 1, 1, 1.0)
+        else:
+            material.albedo_color = Color(0, 0, 0, 1.0)
+
 
 
 func _on_goal_body_entered(body:Node3D):
