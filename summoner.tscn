@@ -1,25 +1,111 @@
-[gd_scene load_steps=5 format=3 uid="uid://bymi4apke5ok2"]
+[gd_scene load_steps=9 format=3 uid="uid://bymi4apke5ok2"]
 
 [ext_resource type="Script" path="res://summoner.gd" id="1_4buju"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_r0pat"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asu0s"]
-albedo_color = Color(0, 0.313726, 1, 1)
+[ext_resource type="PackedScene" uid="uid://mi8pi6l6ybl3" path="res://blender/summoner.glb" id="2_cklcr"]
+[ext_resource type="PackedScene" uid="uid://bq0is55r43eop" path="res://blender/staff.glb" id="3_4xg4a"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_by2d7"]
 
+[sub_resource type="Animation" id="Animation_dfodm"]
+resource_name = "walk"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/SummonerPivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1.25), Vector3(1, 1, 1), Vector3(1.25, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/StaffPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.6, 1, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0872665, 0, 0), Vector3(-0.0872665, 0, 0), Vector3(0.0872665, 0, 0), Vector3(-0.0872665, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_enclt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/SummonerPivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/StaffPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5k47m"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/SummonerPivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.01, 1.05, 1.01)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8e7x"]
+_data = {
+"RESET": SubResource("Animation_enclt"),
+"idle": SubResource("Animation_5k47m"),
+"walk": SubResource("Animation_dfodm")
+}
+
 [node name="Summoner" type="CharacterBody3D"]
 script = ExtResource("1_4buju")
-speed = null
-fall_acceleration = null
-jump_impulse = null
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 1.75, 0)
-mesh = SubResource("CylinderMesh_r0pat")
-surface_material_override/0 = SubResource("StandardMaterial3D_asu0s")
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="SummonerPivot" type="Node3D" parent="Pivot"]
+
+[node name="summoner" parent="Pivot/SummonerPivot" instance=ExtResource("2_cklcr")]
+
+[node name="StaffPivot" type="Node3D" parent="Pivot"]
+
+[node name="staff" parent="Pivot/StaffPivot" instance=ExtResource("3_4xg4a")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 1.75, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.75, 0)
 shape = SubResource("CylinderShape3D_by2d7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h8e7x")
+}
+autoplay = "idle"

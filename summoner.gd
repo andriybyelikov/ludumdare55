@@ -17,6 +17,19 @@ func _physics_process(delta):
     var direction: Vector3 = Vector3(r - l, 0, 0)
     target_velocity.x = direction.x * speed
     target_velocity.z = direction.z * speed
+    
+    # animate
+    if direction.x == 0 and direction.y == 0:
+        $AnimationPlayer.set_current_animation("idle")
+    else:
+        $AnimationPlayer.set_current_animation("walk")
+    # facing
+    if direction.x < 0:
+        $Pivot.rotation.y = - PI / 6
+    elif direction.x > 0:
+        $Pivot.rotation.y = + PI / 6
+    else:
+        pass
 
     # falling
     if not is_on_floor():
