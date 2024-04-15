@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvsc4wc2unvfu"]
+[gd_scene load_steps=21 format=3 uid="uid://cvsc4wc2unvfu"]
 
 [ext_resource type="Script" path="res://prototype1.gd" id="1_lysoa"]
 [ext_resource type="PackedScene" uid="uid://bymi4apke5ok2" path="res://summoner.tscn" id="2_aus0f"]
@@ -8,16 +8,42 @@
 [ext_resource type="PackedScene" uid="uid://2uiukc7rplcq" path="res://levels/level3.tscn" id="4_7aqf6"]
 [ext_resource type="PlaneMesh" uid="uid://l588oxlatlwa" path="res://materials/marker.tres" id="5_52u2c"]
 [ext_resource type="AudioStream" uid="uid://r2vkwhuvmmih" path="res://music/Contra musas privo boni [oHLkwJ0JNe8].ogg" id="7_vpx5b"]
-[ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="8_mgnd2"]
 [ext_resource type="PackedScene" uid="uid://dahee2l0ueghu" path="res://levels/level1.tscn" id="9_cdyk1"]
 [ext_resource type="FontFile" uid="uid://d0ut0cxde0twx" path="res://fonts/UglyQua.ttf" id="10_qq2a3"]
 [ext_resource type="Texture2D" uid="uid://peinf2c8xh34" path="res://textures/mouse.tres" id="11_2h7gu"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_01m3q"]
+[sub_resource type="Gradient" id="Gradient_ceysh"]
+offsets = PackedFloat32Array(0.00401606, 0.504016, 0.711847, 0.790161, 0.814257, 0.962851)
+colors = PackedColorArray(0.281366, 0.220718, 0.102248, 1, 0.355854, 0.305834, 0.208156, 1, 0.322719, 0.291247, 0.229778, 1, 0.617131, 0.58169, 0.512602, 1, 0.322719, 0.291247, 0.229778, 1, 0.322719, 0.291247, 0.229778, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_di5b3"]
-albedo_texture = ExtResource("8_mgnd2")
-uv1_scale = Vector3(100, 100, 100)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bnofb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pj87a"]
+seamless = true
+seamless_blend_skirt = 0.665
+color_ramp = SubResource("Gradient_ceysh")
+noise = SubResource("FastNoiseLite_bnofb")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6rycd"]
+frequency = 0.0376
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hkt2i"]
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 0.582
+as_normal_map = true
+noise = SubResource("FastNoiseLite_6rycd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_my5sx"]
+albedo_texture = SubResource("NoiseTexture2D_pj87a")
+metallic_specular = 0.0
+roughness = 0.98
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_hkt2i")
+uv1_scale = Vector3(22.465, 22.465, 22.465)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ihp2u"]
+material = SubResource("StandardMaterial3D_my5sx")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ki4ax"]
 transparency = 1
@@ -51,8 +77,7 @@ sky_mode = 1
 
 [node name="Background" type="MeshInstance3D" parent="."]
 transform = Transform3D(210, 0, 0, 0, -9.17939e-06, -210, 0, 210, -9.17939e-06, 0, 0, -4)
-mesh = SubResource("PlaneMesh_01m3q")
-surface_material_override/0 = SubResource("StandardMaterial3D_di5b3")
+mesh = SubResource("PlaneMesh_ihp2u")
 
 [node name="Summoner" parent="." instance=ExtResource("2_aus0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
@@ -65,8 +90,8 @@ current = true
 [node name="OmniLight3D" type="OmniLight3D" parent="Summoner/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88588, 2, 10.3967)
 light_color = Color(0.862745, 0.964706, 0.960784, 1)
-omni_range = 157.29
-omni_attenuation = 0.153894
+omni_range = 123.507
+omni_attenuation = 0.11663
 
 [node name="PlayerAnchor" type="Node3D" parent="Summoner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14144, 0)
