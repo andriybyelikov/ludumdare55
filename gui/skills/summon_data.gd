@@ -12,3 +12,4 @@ extends Resource
 @export var summoning_range: int
 @export var lifespan: int
 @export var effect_range: int
+@export var through_walls: bool = true

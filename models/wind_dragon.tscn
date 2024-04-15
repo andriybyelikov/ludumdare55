@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dfvijpagdh3j2" path="res://blender/wind_dragon_jaw.glb" id="3_nyy88"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n1yik"]
-radius = 1.0
+radius = 1.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_08kga"]
 size = Vector3(2, 1, 1)
@@ -37,6 +37,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Aoe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894247, 0, 0)
 shape = SubResource("CylinderShape3D_n1yik")
 
 [node name="Pivot" type="Node3D" parent="."]

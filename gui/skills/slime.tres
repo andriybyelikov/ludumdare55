@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="SummonData" load_steps=4 format=3 uid="uid://hl7b5q7h71lm"]
 
-[ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="1_4w0u5"]
+[ext_resource type="Texture2D" uid="uid://clin18hi8dt3i" path="res://gui/assets/slime.png" id="1_0q6a2"]
 [ext_resource type="PackedScene" uid="uid://cx16eu30tt0in" path="res://models/sticky_slime.tscn" id="2_7167d"]
 [ext_resource type="Script" path="res://gui/skills/summon_data.gd" id="3_mqdfg"]
 
 [resource]
 script = ExtResource("3_mqdfg")
-icon = ExtResource("1_4w0u5")
+icon = ExtResource("1_0q6a2")
 name = "Sticky Slime"
 description = ""
 model = ExtResource("2_7167d")
 summoning_range = 10
 lifespan = 1
 effect_range = 0
+through_walls = true

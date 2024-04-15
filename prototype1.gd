@@ -84,11 +84,11 @@ func show_summon_area():
 
 
 func do_summoning(p_position: Vector3):
-    var summon_scene: Node = summoning.model.instantiate()
     match summoning.name:
         "UFO":
             spawn_ufo(p_position)
         _:
+            var summon_scene: Node = summoning.model.instantiate()
             summons.add_child(summon_scene)
             summon_scene.position = p_position
 
@@ -115,11 +115,14 @@ func _valid_spawn_radius(p_position: Vector3):
 
 
 func _is_valid_summon_position(p_position: Vector3):
-    match summoning.name:
-        "UFO":
-            return _valid_spawn_radius(p_position) and not _player_terrain_collision(p_position)
-        _:
-            return _valid_spawn_radius(p_position) and not _click_terrain_collision(p_position)
+    if summoning.through_walls:
+        return _valid_spawn_radius(p_position) and not _click_terrain_collision(p_position)
+    return _valid_spawn_radius(p_position) and not _player_terrain_collision(p_position)
+    # match summoning.name:
+        # "UFO":
+        #     return _valid_spawn_radius(p_position) and not _player_terrain_collision(p_position)
+        # _:
+        #     return _valid_spawn_radius(p_position) and not _click_terrain_collision(p_position)
 
 
 func _unhandled_input(event):

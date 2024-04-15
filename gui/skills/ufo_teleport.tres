@@ -1,15 +1,14 @@
-[gd_resource type="Resource" script_class="SummonData" load_steps=4 format=3 uid="uid://bitf8lqvn5ay1"]
+[gd_resource type="Resource" script_class="SummonData" load_steps=3 format=3 uid="uid://bitf8lqvn5ay1"]
 
 [ext_resource type="Script" path="res://gui/skills/summon_data.gd" id="1_7b852"]
-[ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="1_335p4"]
-[ext_resource type="PackedScene" uid="uid://bjbxg4kui8ela" path="res://models/wind_dragon.tscn" id="2_saroa"]
+[ext_resource type="Texture2D" uid="uid://dakg1t331y2uu" path="res://gui/assets/ufo.png" id="1_sj51t"]
 
 [resource]
 script = ExtResource("1_7b852")
-icon = ExtResource("1_335p4")
+icon = ExtResource("1_sj51t")
 name = "UFO"
 description = ""
-model = ExtResource("2_saroa")
-summoning_range = 20
+summoning_range = 10
 lifespan = 0
 effect_range = 0
+through_walls = true

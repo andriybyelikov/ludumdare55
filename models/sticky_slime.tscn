@@ -19,3 +19,5 @@ collision_mask = 4
 shape = SubResource("BoxShape3D_6003n")
 
 [node name="slime" parent="." instance=ExtResource("2_26flm")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

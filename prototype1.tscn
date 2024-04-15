@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvsc4wc2unvfu"]
+[gd_scene load_steps=14 format=3 uid="uid://cvsc4wc2unvfu"]
 
 [ext_resource type="Script" path="res://prototype1.gd" id="1_lysoa"]
 [ext_resource type="PackedScene" uid="uid://bymi4apke5ok2" path="res://summoner.tscn" id="2_aus0f"]
 [ext_resource type="PackedScene" uid="uid://dxsi6ao045lvj" path="res://levels/level2.tscn" id="3_ij3f7"]
 [ext_resource type="PackedScene" uid="uid://nag40h0wl7bi" path="res://gui/cards_gui.tscn" id="3_lqiq1"]
+[ext_resource type="PackedScene" uid="uid://2uiukc7rplcq" path="res://levels/level3.tscn" id="4_7aqf6"]
 [ext_resource type="PlaneMesh" uid="uid://l588oxlatlwa" path="res://materials/marker.tres" id="5_52u2c"]
 [ext_resource type="AudioStream" uid="uid://r2vkwhuvmmih" path="res://music/Contra musas privo boni [oHLkwJ0JNe8].ogg" id="7_vpx5b"]
 [ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="8_mgnd2"]
@@ -22,7 +23,7 @@ albedo_color = Color(0.882353, 0, 0.466667, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-levels = Array[PackedScene]([ExtResource("9_cdyk1"), ExtResource("3_ij3f7")])
+levels = Array[PackedScene]([ExtResource("3_ij3f7"), ExtResource("9_cdyk1"), ExtResource("4_7aqf6")])
 deck_count = 30
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -60,9 +61,12 @@ unique_name_in_owner = true
 
 [node name="Control" type="Control" parent="gui_layer"]
 layout_mode = 3
-anchors_preset = 15
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1280.0
+offset_top = -720.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
