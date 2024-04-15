@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://djj1ng4w1asgl"]
+
+[ext_resource type="Script" path="res://scripts/sticky_slime.gd" id="1_wj4vt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bpso"]
+albedo_color = Color(0.141176, 0.501961, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e8sum"]
+material = SubResource("StandardMaterial3D_3bpso")
+size = Vector3(1, 0.58, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_08kga"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6003n"]
+size = Vector3(0.32, 0.32, 1.03)
+
+[node name="StickySlime" type="Node3D"]
+script = ExtResource("1_wj4vt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_e8sum")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0184937, 0, 0)
+shape = SubResource("BoxShape3D_08kga")
+
+[node name="Aoe" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Aoe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0571578, -0.105881, 0.00586715)
+shape = SubResource("BoxShape3D_6003n")
