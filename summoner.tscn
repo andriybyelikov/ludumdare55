@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bymi4apke5ok2"]
+[gd_scene load_steps=14 format=3 uid="uid://bymi4apke5ok2"]
 
 [ext_resource type="Script" path="res://summoner.gd" id="1_4buju"]
 [ext_resource type="PackedScene" uid="uid://mi8pi6l6ybl3" path="res://blender/summoner.glb" id="2_cklcr"]
 [ext_resource type="PackedScene" uid="uid://bq0is55r43eop" path="res://blender/staff.glb" id="3_4xg4a"]
+[ext_resource type="PackedScene" uid="uid://bxsfk5cagpbys" path="res://blender/ufo.glb" id="4_vdt2u"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_by2d7"]
 height = 1.445
@@ -37,14 +38,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Pivot:position")
+tracks/2/path = NodePath("ufo:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ufo:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0.025, 0.025, 0.025)]
 }
 
 [sub_resource type="Animation" id="Animation_5k47m"]
@@ -118,6 +131,68 @@ _data = {
 "walk": SubResource("Animation_dfodm")
 }
 
+[sub_resource type="Animation" id="Animation_6sdpg"]
+resource_name = "despawn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ufo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ufo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.44, 0.44, 0.44), Vector3(0.005, 0.005, 0.005)]
+}
+
+[sub_resource type="Animation" id="Animation_pdn0n"]
+resource_name = "spawn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ufo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ufo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.005, 0.005, 0.005), Vector3(0.44, 0.44, 0.44)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djk1h"]
+_data = {
+"despawn": SubResource("Animation_6sdpg"),
+"spawn": SubResource("Animation_pdn0n")
+}
+
 [node name="Summoner" type="CharacterBody3D"]
 collision_layer = 12
 collision_mask = 2
@@ -147,3 +222,14 @@ libraries = {
 "": SubResource("AnimationLibrary_h8e7x")
 }
 autoplay = "levitate"
+
+[node name="ufo" parent="." instance=ExtResource("4_vdt2u")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 5.76, 0)
+visible = false
+
+[node name="UfoAnimationPlayer" type="AnimationPlayer" parent="ufo"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_djk1h")
+}

@@ -96,7 +96,9 @@ func do_summoning(p_position: Vector3):
 
 
 func spawn_ufo(p_position: Vector3):
+    await summoner.play_ufo()
     summoner.position = p_position
+    summoner.play_ufo(false)
 
 
 func _click_terrain_collision(p_position: Vector3):

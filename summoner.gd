@@ -74,9 +74,19 @@ func _normal_movement(delta: float):
     target_velocity += impulse
     velocity = target_velocity
 
+func play_ufo(p_forward: bool = true):
+    print("play ufo")
+    if p_forward:
+        %UfoAnimationPlayer.play("spawn")
+    else:
+        %UfoAnimationPlayer.play("despawn")
+
+    await %UfoAnimationPlayer.animation_finished
+
+
+
 func _physics_process(delta):
     self.position.z = fixed_z
-
     if stuck:
         _stuck_movement(delta)
     else:
