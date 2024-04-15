@@ -27,12 +27,11 @@ func _ready():
     camera = get_node("%Camera3D")
     summoner = get_node("Summoner")
     raycast = get_node("%RayCast3D")
-
-    cast_range.hide()
     init_level(current_level)
 
 
 func init_level(level_index: int):
+    cancel_summoning()
     skill_hand.clear()
     skill_deck.clear()
 
@@ -77,8 +76,7 @@ func try_refill_hand():
         skill_hand.push_back(new_summon_skill)
 
     summon_gui.update_hand(skill_hand)
-    self.current_clicked = -1
-    self.summoning = null
+    cancel_summoning()
 
 
 func show_summon_area():
