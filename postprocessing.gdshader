@@ -11,7 +11,7 @@ uniform float min_lum: hint_range(0.0, 1.0) = 0.0;
 uniform float max_lum: hint_range(0.0, 1.0) = 1.0;
 uniform float speed: hint_range(0.0, 10.0) = 1.0;
 
-uniform int perdiod: hint_range(0.0, 5.0) = 1;
+uniform int perdiod: hint_range(0.0, 15.0) = 1;
 uniform float duration: hint_range(0.0, 1.0) = 1;
 
 void fragment(){

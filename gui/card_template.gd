@@ -10,7 +10,6 @@ func _ready():
     skill_button = get_node("%SkillButton")
     skill_label = get_node("%SkillLabel")
     skill_description = get_node("%Description")
-
     skill_button.pressed.connect(skill_pressed)
 
 func skill_pressed():
