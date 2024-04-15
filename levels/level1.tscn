@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://bpyjuaap5568o" path="res://gui/skills/dragon_wind_breath.tres" id="3_cemqq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yjs62"]
-size = Vector3(4, 1, 4)
+size = Vector3(4.615, 1, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ipws0"]
 size = Vector3(4, 1, 4)
