@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dua7mdfrk3ly"]
+[gd_scene load_steps=25 format=3 uid="uid://dua7mdfrk3ly"]
 
 [ext_resource type="FontFile" uid="uid://d0ut0cxde0twx" path="res://fonts/UglyQua.ttf" id="1_q42vi"]
 [ext_resource type="Script" path="res://tittle_screen.gd" id="1_ugu5k"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bq0is55r43eop" path="res://blender/staff.glb" id="4_g1mr4"]
 [ext_resource type="PackedScene" uid="uid://bxsfk5cagpbys" path="res://blender/ufo.glb" id="5_8pons"]
 [ext_resource type="Shader" path="res://postprocessing.gdshader" id="6_2mjhc"]
-[ext_resource type="AudioStream" uid="uid://r2vkwhuvmmih" path="res://music/Contra musas privo boni [oHLkwJ0JNe8].ogg" id="7_uqy7a"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="9_100e1"]
 [ext_resource type="MeshLibrary" uid="uid://bgmqabvgew36f" path="res://mesh_library.tres" id="9_em67e"]
 [ext_resource type="Resource" uid="uid://bpyjuaap5568o" path="res://gui/skills/dragon_wind_breath.tres" id="10_mp1tx"]
@@ -287,10 +286,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Main"]
-stream = ExtResource("7_uqy7a")
-autoplay = true
 
 [node name="Level" type="Node3D" parent="Main"]
 script = ExtResource("9_100e1")

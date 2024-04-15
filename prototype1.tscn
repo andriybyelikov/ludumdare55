@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cvsc4wc2unvfu"]
+[gd_scene load_steps=24 format=3 uid="uid://cvsc4wc2unvfu"]
 
 [ext_resource type="Script" path="res://prototype1.gd" id="1_lysoa"]
 [ext_resource type="PackedScene" uid="uid://bymi4apke5ok2" path="res://summoner.tscn" id="2_aus0f"]
@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://nag40h0wl7bi" path="res://gui/cards_gui.tscn" id="3_lqiq1"]
 [ext_resource type="PackedScene" uid="uid://2uiukc7rplcq" path="res://levels/level3.tscn" id="4_7aqf6"]
 [ext_resource type="PlaneMesh" uid="uid://l588oxlatlwa" path="res://materials/marker.tres" id="5_52u2c"]
-[ext_resource type="AudioStream" uid="uid://r2vkwhuvmmih" path="res://music/Contra musas privo boni [oHLkwJ0JNe8].ogg" id="7_vpx5b"]
+[ext_resource type="PackedScene" uid="uid://bicwfhfab3kn8" path="res://levels/level5.tscn" id="6_donlo"]
 [ext_resource type="PackedScene" uid="uid://dahee2l0ueghu" path="res://levels/level1.tscn" id="9_cdyk1"]
 [ext_resource type="Shader" path="res://postprocessing.gdshader" id="10_jnetk"]
 [ext_resource type="FontFile" uid="uid://d0ut0cxde0twx" path="res://fonts/UglyQua.ttf" id="10_qq2a3"]
 [ext_resource type="Texture2D" uid="uid://peinf2c8xh34" path="res://textures/mouse.tres" id="11_2h7gu"]
+[ext_resource type="AudioStream" uid="uid://ccynpy8oh8kqc" path="res://music/apprentice_binder.ogg" id="11_tyivg"]
 
 [sub_resource type="Gradient" id="Gradient_ceysh"]
 offsets = PackedFloat32Array(0.00401606, 0.504016, 0.711847, 0.790161, 0.814257, 0.962851)
@@ -68,7 +69,7 @@ size = Vector2(1, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-levels = Array[PackedScene]([ExtResource("9_cdyk1"), ExtResource("3_ij3f7"), ExtResource("4_7aqf6"), ExtResource("2_yt6qw")])
+levels = Array[PackedScene]([ExtResource("6_donlo"), ExtResource("9_cdyk1"), ExtResource("3_ij3f7"), ExtResource("4_7aqf6"), ExtResource("2_yt6qw")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.995396, -0.0706649, 0.0647524, 0, 0.67559, 0.737277, -0.0958458, -0.733883, 0.67248, 0, 20, 40.702)
@@ -152,7 +153,7 @@ text = "Reset Level (R)"
 flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_vpx5b")
+stream = ExtResource("11_tyivg")
 autoplay = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
