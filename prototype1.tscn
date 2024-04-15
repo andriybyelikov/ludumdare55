@@ -33,7 +33,7 @@ size = Vector2(1, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-levels = Array[PackedScene]([ExtResource("2_yt6qw"), ExtResource("4_7aqf6"), ExtResource("3_ij3f7"), ExtResource("9_cdyk1")])
+levels = Array[PackedScene]([ExtResource("9_cdyk1"), ExtResource("3_ij3f7"), ExtResource("4_7aqf6"), ExtResource("2_yt6qw")])
 deck_count = 30
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
