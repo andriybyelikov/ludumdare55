@@ -202,7 +202,6 @@ unique_name_in_owner = true
 title = "CREDITS"
 initial_position = 1
 size = Vector2i(320, 614)
-visible = true
 theme = SubResource("Theme_cq5sa")
 theme_override_styles/panel = SubResource("StyleBoxFlat_48enc")
 dialog_text = "Project Management: Andriy
