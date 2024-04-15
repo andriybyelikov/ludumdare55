@@ -64,8 +64,9 @@ current = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Summoner/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88588, 2, 10.3967)
-omni_range = 4096.0
-omni_attenuation = 1e-05
+light_color = Color(0.862745, 0.964706, 0.960784, 1)
+omni_range = 157.29
+omni_attenuation = 0.153894
 
 [node name="PlayerAnchor" type="Node3D" parent="Summoner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14144, 0)
