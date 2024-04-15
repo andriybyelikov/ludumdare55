@@ -65,6 +65,10 @@ func _on_cards_gui_card_clicked(p_which_skill: int):
     self.summoning = summoning_skill
     show_summon_area()
 
+func cancel_summoning():
+    cast_range.hide()
+    self.current_clicked = -1
+    self.summoning = null
 
 func try_refill_hand():
     skill_hand.pop_at(self.current_clicked)
@@ -126,15 +130,15 @@ func _is_valid_summon_position(p_position: Vector3):
 
 
 func _unhandled_input(event):
-    if event is InputEventMouseButton and summoning:
-        var mouse_position: Vector2 = get_viewport().get_mouse_position()
-        var mouse_world_position = camera.project_position(mouse_position, camera.position.z)
-
-        if (Input.is_action_just_pressed("confirm")
-                and _is_valid_summon_position(mouse_world_position)):
-            cast_range.hide()
-            do_summoning(mouse_world_position)
-            try_refill_hand()
+    if event is InputEventMouseButton:
+        if Input.is_action_just_pressed("confirm"):
+            var mouse_position: Vector2 = get_viewport().get_mouse_position()
+            var mouse_world_position = camera.project_position(mouse_position, camera.position.z)
+            if summoning and _is_valid_summon_position(mouse_world_position):
+                do_summoning(mouse_world_position)
+                try_refill_hand()
+        elif Input.is_action_just_pressed("cancel"):
+            cancel_summoning()
 
 
 func _process(_delta):
