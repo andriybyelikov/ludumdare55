@@ -1,11 +1,11 @@
 shader_type canvas_item;
 uniform sampler2D screen_texture: hint_screen_texture;
-uniform float r_displacement = 2.0;
-uniform float b_displacement = -2.0;
+uniform float r_displacement: hint_range(-3.0, 3.0) = 2.0;
+uniform float b_displacement: hint_range(-3.0, 3.0) = -2.0;
 
 uniform float size: hint_range(0.0, 2.0)= .5;
-uniform float min_lum: hint_range(0.0, 1.0)= .0;
-uniform float max_lum: hint_range(0.0, 1.0)= 1.0;
+uniform float min_lum: hint_range(0.0, 1.0) = 0.0;
+uniform float max_lum: hint_range(0.0, 1.0) = 1.0;
 
 void fragment(){
     vec2 uv = SCREEN_UV;
