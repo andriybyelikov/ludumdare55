@@ -13,6 +13,7 @@ var fixed_z: float = 0
 func _ready():
     fixed_z = self.position.z
 
+
 func _physics_process(delta):
     self.position.z = fixed_z
     var l: int = Input.is_action_pressed("move_left")
@@ -22,10 +23,11 @@ func _physics_process(delta):
     target_velocity.z = direction.z * speed
 
     # animate
-    if direction.x == 0 and direction.y == 0:
-        $AnimationPlayer.set_current_animation("idle")
-    else:
-        $AnimationPlayer.set_current_animation("walk")
+    if is_on_floor():
+        if direction.x == 0 and direction.y == 0:
+            $AnimationPlayer.set_current_animation("idle")
+        else:
+            $AnimationPlayer.set_current_animation("walk")
 
     # facing
     if direction.x < 0:
@@ -42,7 +44,9 @@ func _physics_process(delta):
         print("jumping")
         target_velocity.y = jump_impulse
 
-    var impulse: Vector3 = force_accumulator/mass*delta
-    velocity = target_velocity+impulse
+    var impulse: Vector3 = (force_accumulator / mass) * delta
+    target_velocity += impulse
+    velocity = target_velocity
+    
     move_and_slide()
     force_accumulator = Vector3.ZERO

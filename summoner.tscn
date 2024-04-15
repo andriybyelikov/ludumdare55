@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bymi4apke5ok2"]
+[gd_scene load_steps=10 format=3 uid="uid://bymi4apke5ok2"]
 
 [ext_resource type="Script" path="res://summoner.gd" id="1_4buju"]
 [ext_resource type="PackedScene" uid="uid://mi8pi6l6ybl3" path="res://blender/summoner.glb" id="2_cklcr"]
@@ -27,6 +27,18 @@ tracks/1/path = NodePath("Pivot/StaffPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -79,10 +91,28 @@ tracks/1/keys = {
 "values": [Vector3(0.0872665, 0, 0), Vector3(-0.0872665, 0, 0), Vector3(0.0872665, 0, 0), Vector3(-0.0872665, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_tu6bp"]
+resource_name = "levitate"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0), Vector3(0, 0, 0), Vector3(0, 0.25, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h8e7x"]
 _data = {
 "RESET": SubResource("Animation_enclt"),
 "idle": SubResource("Animation_5k47m"),
+"levitate": SubResource("Animation_tu6bp"),
 "walk": SubResource("Animation_dfodm")
 }
 
@@ -109,4 +139,4 @@ shape = SubResource("CylinderShape3D_by2d7")
 libraries = {
 "": SubResource("AnimationLibrary_h8e7x")
 }
-autoplay = "idle"
+autoplay = "levitate"
