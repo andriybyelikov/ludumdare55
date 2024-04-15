@@ -95,7 +95,7 @@ func spawn_ufo(p_position: Vector3):
 
 func _click_terrain_collision(p_position: Vector3):
     raycast.global_position = camera.global_position
-    # raycast.global_position.z *= -1 // So that does not block view for debugging
+    raycast.global_position.z *= -1 # So that does not block view for debugging
     raycast.target_position = p_position-raycast.global_position
     return raycast.is_colliding()
 
