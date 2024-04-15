@@ -117,9 +117,11 @@ _data = {
 }
 
 [node name="Summoner" type="CharacterBody3D"]
-collision_layer = 7
-collision_mask = 3
+collision_layer = 4
+collision_mask = 2
+axis_lock_linear_z = true
 script = ExtResource("1_4buju")
+mass = 10.0
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
