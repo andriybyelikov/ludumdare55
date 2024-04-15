@@ -1,10 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx16eu30tt0in"]
+[gd_scene load_steps=7 format=3 uid="uid://cx16eu30tt0in"]
 
 [ext_resource type="Script" path="res://scripts/sticky_slime.gd" id="1_wj4vt"]
 [ext_resource type="PackedScene" uid="uid://dqpqbh5hfkv8f" path="res://blender/slime.glb" id="2_26flm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6003n"]
 size = Vector3(0.32, 0.32, 1.03)
+
+[sub_resource type="Animation" id="Animation_evpsm"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/slime:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.755, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_23xis"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/slime:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tm6gv"]
+_data = {
+"RESET": SubResource("Animation_23xis"),
+"idle": SubResource("Animation_evpsm")
+}
 
 [node name="StickySlime" type="Node3D"]
 script = ExtResource("1_wj4vt")
@@ -18,6 +56,13 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Aoe"]
 shape = SubResource("BoxShape3D_6003n")
 
-[node name="slime" parent="." instance=ExtResource("2_26flm")]
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, -0.5)
+
+[node name="slime" parent="Node3D" instance=ExtResource("2_26flm")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tm6gv")
+}
+autoplay = "idle"
