@@ -29,30 +29,32 @@ func _ready():
     raycast = get_node("%RayCast3D")
 
     cast_range.hide()
-    init_level()
+    init_level(current_level)
 
 
-func init_level():
+func init_level(level_index: int):
     skill_hand.clear()
     skill_deck.clear()
 
-    level = levels[current_level].instantiate()
+    level = levels[level_index].instantiate()
+    self.add_child(level)
 
     summons = level.get_node("%Summons")
     summoner.position = level.get_node("%StartPosition").position
     var goal = level.get_node("%Goal")
 
-    for i in range(deck_count):
-        skill_deck.append(level.skill_db.pick_random())
 
-    for i in range(hand_count):
-        var new_skill: SummonData = skill_deck.pop_back()
+    skill_deck = level.skill_db.duplicate()
+    # for i in range(deck_count):
+    #     # skill_deck.append(level.skill_db.pick_random())
+    #     skill_deck.append(level.skill_db.pick_random())
+
+    for i in range(min(hand_count, skill_deck.size())):
+        var new_skill: SummonData = skill_deck.pop_front()
         skill_hand.push_back(new_skill)
 
     summon_gui.update_hand(skill_hand)
     goal.body_entered.connect(_on_goal_body_entered)
-    current_level = (current_level + 1) % levels.size()
-    self.add_child(level)
     await get_tree().process_frame # Wait for player position to update to level start
     goal.monitoring = true
 
@@ -144,8 +146,13 @@ func _process(_delta):
             material.albedo_color = Color(0, 0, 0, 1.0)
 
 
-
 func _on_goal_body_entered(body:Node3D):
     if body.name == "Summoner":
         level.queue_free()
-        init_level()
+        current_level = (current_level + 1) % levels.size()
+        init_level(current_level)
+
+
+func _on_level_reset_button_pressed():
+    level.queue_free()
+    init_level(current_level)

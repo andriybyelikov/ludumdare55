@@ -57,8 +57,28 @@ mesh = ExtResource("5_52u2c")
 
 [node name="SummoningGUI" parent="gui_layer" instance=ExtResource("3_lqiq1")]
 unique_name_in_owner = true
-offset_top = -1.0
-offset_bottom = -1.0
+
+[node name="Control" type="Control" parent="gui_layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LevelResetButton" type="Button" parent="gui_layer/Control"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 103.0
+offset_bottom = 38.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.580392, 0.14902, 0.0666667, 1)
+theme_override_constants/outline_size = 20
+text = "Reset Level"
+flat = true
 
 [node name="aa" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_760g6")
@@ -76,3 +96,4 @@ debug_shape_custom_color = Color(0.780392, 0, 0.454902, 1)
 debug_shape_thickness = 5
 
 [connection signal="card_clicked" from="gui_layer/SummoningGUI" to="." method="_on_cards_gui_card_clicked"]
+[connection signal="pressed" from="gui_layer/Control/LevelResetButton" to="." method="_on_level_reset_button_pressed"]

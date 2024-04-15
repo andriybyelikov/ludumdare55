@@ -8,7 +8,7 @@
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_c0jwk")
-skill_db = Array[Resource("res://gui/skills/summon_data.gd")]([ExtResource("3_qjkif"), ExtResource("3_ms3ax")])
+skill_db = Array[Resource("res://gui/skills/summon_data.gd")]([ExtResource("3_qjkif"), ExtResource("3_ms3ax"), ExtResource("3_qjkif")])
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("4_5conf")
