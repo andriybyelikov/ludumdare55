@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvsc4wc2unvfu"]
+[gd_scene load_steps=13 format=3 uid="uid://cvsc4wc2unvfu"]
 
 [ext_resource type="Script" path="res://prototype1.gd" id="1_lysoa"]
 [ext_resource type="PackedScene" uid="uid://bymi4apke5ok2" path="res://summoner.tscn" id="2_aus0f"]
+[ext_resource type="PackedScene" uid="uid://dxsi6ao045lvj" path="res://levels/level2.tscn" id="3_ij3f7"]
 [ext_resource type="PackedScene" uid="uid://nag40h0wl7bi" path="res://gui/cards_gui.tscn" id="3_lqiq1"]
-[ext_resource type="Texture2D" uid="uid://cqdg2ghfcou0r" path="res://textures/cast_range.tres" id="7_bcw7p"]
+[ext_resource type="PlaneMesh" uid="uid://l588oxlatlwa" path="res://materials/marker.tres" id="5_52u2c"]
 [ext_resource type="AudioStream" uid="uid://r2vkwhuvmmih" path="res://music/Contra musas privo boni [oHLkwJ0JNe8].ogg" id="7_vpx5b"]
 [ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="8_mgnd2"]
 [ext_resource type="PackedScene" uid="uid://cd6fewubr8ufc" path="res://levels/level1.tscn" id="9_cdyk1"]
@@ -14,16 +15,6 @@
 albedo_texture = ExtResource("8_mgnd2")
 uv1_scale = Vector3(100, 100, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gpiv"]
-transparency = 1
-no_depth_test = true
-albedo_color = Color(0.65098, 0.686275, 0.701961, 1)
-albedo_texture = ExtResource("7_bcw7p")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ya6xf"]
-material = SubResource("StandardMaterial3D_7gpiv")
-size = Vector2(1, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_760g6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uv1e"]
@@ -31,7 +22,7 @@ albedo_color = Color(0.882353, 0, 0.466667, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-levels = Array[PackedScene]([ExtResource("9_cdyk1")])
+levels = Array[PackedScene]([ExtResource("9_cdyk1"), ExtResource("3_ij3f7")])
 deck_count = 30
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -59,7 +50,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14144, 0)
 [node name="CastRange" type="MeshInstance3D" parent="Summoner/PlayerAnchor"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("PlaneMesh_ya6xf")
+cast_shadow = 0
+mesh = ExtResource("5_52u2c")
 
 [node name="gui_layer" type="CanvasLayer" parent="."]
 

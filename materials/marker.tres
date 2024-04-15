@@ -1,0 +1,14 @@
+[gd_resource type="PlaneMesh" load_steps=3 format=3 uid="uid://l588oxlatlwa"]
+
+[ext_resource type="Texture2D" uid="uid://cqdg2ghfcou0r" path="res://textures/cast_range.tres" id="1_xqmqw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gpiv"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.65098, 0.686275, 0.701961, 1)
+albedo_texture = ExtResource("1_xqmqw")
+
+[resource]
+material = SubResource("StandardMaterial3D_7gpiv")
+size = Vector2(1, 1)

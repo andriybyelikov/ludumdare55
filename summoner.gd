@@ -2,6 +2,7 @@ class_name Summoner
 extends CharacterBody3D
 
 @export var speed: int = 10
+@export var stuck_speed: int = 10
 @export var fall_acceleration: int = 75
 @export var jump_impulse: int = 20
 @export var mass: float = 1.0
@@ -21,7 +22,7 @@ func _stuck_movement(delta: float):
     var d: int = Input.is_action_pressed("move_down")
 
     var direction: Vector3 = Vector3(r - l, u - d, 0)
-    target_velocity = direction*speed*0.5
+    target_velocity = direction*stuck_speed
 
     if direction.x == 0 and direction.y == 0:
         $AnimationPlayer.set_current_animation("idle")
