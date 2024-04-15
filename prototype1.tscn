@@ -33,7 +33,7 @@ size = Vector2(1, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-levels = Array[PackedScene]([ExtResource("4_7aqf6"), ExtResource("3_ij3f7"), ExtResource("9_cdyk1"), ExtResource("2_yt6qw")])
+levels = Array[PackedScene]([ExtResource("2_yt6qw"), ExtResource("4_7aqf6"), ExtResource("3_ij3f7"), ExtResource("9_cdyk1")])
 deck_count = 30
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -98,11 +98,12 @@ offset_top = 7.0
 offset_right = 103.0
 offset_bottom = 38.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.580392, 0.14902, 0.0666667, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("10_qq2a3")
-text = "Reset Level"
+text = "Reset Level (R)"
 flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

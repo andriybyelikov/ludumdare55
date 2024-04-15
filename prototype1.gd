@@ -137,6 +137,9 @@ func _unhandled_input(event):
                 try_refill_hand()
         elif Input.is_action_just_pressed("cancel"):
             cancel_summoning()
+    if event is InputEventKey:
+        if Input.is_action_just_pressed("reset_level"):
+            _reset_level()
 
 
 func _process(_delta):
@@ -150,14 +153,15 @@ func _process(_delta):
         else:
             material.albedo_color = Color(0, 0, 0, 1.0)
 
+func _reset_level():
+    level.queue_free()
+    init_level(current_level)
 
 func _on_goal_body_entered(body:Node3D):
     if body.name == "Summoner":
-        level.queue_free()
         current_level = (current_level + 1) % levels.size()
-        init_level(current_level)
-
+        _reset_level()
 
 func _on_level_reset_button_pressed():
-    level.queue_free()
-    init_level(current_level)
+    _reset_level()
+
