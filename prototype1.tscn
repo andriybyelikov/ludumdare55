@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cvsc4wc2unvfu"]
+[gd_scene load_steps=17 format=3 uid="uid://cvsc4wc2unvfu"]
 
 [ext_resource type="Script" path="res://prototype1.gd" id="1_lysoa"]
 [ext_resource type="PackedScene" uid="uid://bymi4apke5ok2" path="res://summoner.tscn" id="2_aus0f"]
@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://r2vkwhuvmmih" path="res://music/Contra musas privo boni [oHLkwJ0JNe8].ogg" id="7_vpx5b"]
 [ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="8_mgnd2"]
 [ext_resource type="PackedScene" uid="uid://dahee2l0ueghu" path="res://levels/level1.tscn" id="9_cdyk1"]
+[ext_resource type="FontFile" uid="uid://d0ut0cxde0twx" path="res://fonts/UglyQua.ttf" id="10_qq2a3"]
+[ext_resource type="Texture2D" uid="uid://peinf2c8xh34" path="res://textures/mouse.tres" id="11_2h7gu"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_01m3q"]
 
@@ -17,21 +19,35 @@
 albedo_texture = ExtResource("8_mgnd2")
 uv1_scale = Vector3(100, 100, 100)
 
-[sub_resource type="SphereMesh" id="SphereMesh_760g6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ki4ax"]
+transparency = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+albedo_texture = ExtResource("11_2h7gu")
+billboard_keep_scale = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uv1e"]
-albedo_color = Color(0.882353, 0, 0.466667, 1)
+[sub_resource type="PlaneMesh" id="PlaneMesh_kl3fp"]
+material = SubResource("StandardMaterial3D_ki4ax")
+size = Vector2(1, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-levels = Array[PackedScene]([ExtResource("2_yt6qw"), ExtResource("4_7aqf6"), ExtResource("3_ij3f7"), ExtResource("9_cdyk1")])
+levels = Array[PackedScene]([ExtResource("4_7aqf6"), ExtResource("3_ij3f7"), ExtResource("9_cdyk1"), ExtResource("2_yt6qw")])
 deck_count = 30
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707106, 0.707106, -0.5, -0.612372, 0.612372, 0, 20, 10)
-light_energy = 2.0
-light_indirect_energy = 2.0
+transform = Transform3D(0.995396, -0.0706649, 0.0647524, 0, 0.67559, 0.737277, -0.0958458, -0.733883, 0.67248, 0, 20, 40.702)
+visible = false
+light_color = Color(0.831373, 0.886275, 0.937255, 1)
+light_energy = 2.789
+light_indirect_energy = 2.901
 shadow_enabled = true
+directional_shadow_split_1 = 0.201
+directional_shadow_split_2 = 0.024
+directional_shadow_split_3 = 0.189
+directional_shadow_fade_start = 0.545
+sky_mode = 1
 
 [node name="Background" type="MeshInstance3D" parent="."]
 transform = Transform3D(210, 0, 0, 0, -9.17939e-06, -210, 0, 210, -9.17939e-06, 0, 0, -4)
@@ -45,6 +61,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 20)
 current = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Summoner/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88588, 2, 10.3967)
+omni_range = 4096.0
+omni_attenuation = 1e-05
 
 [node name="PlayerAnchor" type="Node3D" parent="Summoner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14144, 0)
@@ -79,12 +100,9 @@ focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.580392, 0.14902, 0.0666667, 1)
 theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("10_qq2a3")
 text = "Reset Level"
 flat = true
-
-[node name="aa" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_760g6")
-surface_material_override/0 = SubResource("StandardMaterial3D_4uv1e")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_vpx5b")
@@ -96,6 +114,13 @@ target_position = Vector3(34.795, 30, 0)
 collision_mask = 2
 debug_shape_custom_color = Color(0.780392, 0, 0.454902, 1)
 debug_shape_thickness = 5
+
+[node name="mouse" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.48607, -2)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_kl3fp")
+skeleton = NodePath("../Summoner/PlayerAnchor")
 
 [connection signal="card_clicked" from="gui_layer/SummoningGUI" to="." method="_on_cards_gui_card_clicked"]
 [connection signal="pressed" from="gui_layer/Control/LevelResetButton" to="." method="_on_level_reset_button_pressed"]
