@@ -4,7 +4,7 @@ extends Node
 
 @export var deck_count: int = 3
 @export var hand_count: int = 3
-var current_level: int = -1
+var current_level: int = 0
 var level: Node3D
 
 var summoner: CharacterBody3D
@@ -36,14 +36,11 @@ func init_level():
     skill_hand.clear()
     skill_deck.clear()
 
-    current_level = (current_level + 1) % levels.size()
     level = levels[current_level].instantiate()
-    self.add_child(level)
 
     summons = level.get_node("%Summons")
     summoner.position = level.get_node("%StartPosition").position
     var goal = level.get_node("%Goal")
-    goal.body_entered.connect(_on_goal_body_entered)
 
     for i in range(deck_count):
         skill_deck.append(level.skill_db.pick_random())
@@ -53,6 +50,11 @@ func init_level():
         skill_hand.push_back(new_skill)
 
     summon_gui.update_hand(skill_hand)
+    goal.body_entered.connect(_on_goal_body_entered)
+    current_level = (current_level + 1) % levels.size()
+    self.add_child(level)
+    await get_tree().process_frame # Wait for player position to update to level start
+    goal.monitoring = true
 
 
 func _on_cards_gui_card_clicked(p_which_skill: int):

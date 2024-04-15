@@ -7,7 +7,7 @@
 [ext_resource type="PlaneMesh" uid="uid://l588oxlatlwa" path="res://materials/marker.tres" id="5_52u2c"]
 [ext_resource type="AudioStream" uid="uid://r2vkwhuvmmih" path="res://music/Contra musas privo boni [oHLkwJ0JNe8].ogg" id="7_vpx5b"]
 [ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="8_mgnd2"]
-[ext_resource type="PackedScene" uid="uid://cd6fewubr8ufc" path="res://levels/level1.tscn" id="9_cdyk1"]
+[ext_resource type="PackedScene" uid="uid://dahee2l0ueghu" path="res://levels/level1.tscn" id="9_cdyk1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_01m3q"]
 
