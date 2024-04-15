@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjbxg4kui8ela"]
+[gd_scene load_steps=6 format=3 uid="uid://bjbxg4kui8ela"]
+
+[ext_resource type="Script" path="res://scripts/wind_dragon.gd" id="1_dmi28"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_0tpx3"]
 
@@ -7,7 +9,12 @@ albedo_color = Color(1, 0.0352941, 0.027451, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_08kga"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n1yik"]
+height = 2.7016
+radius = 0.777
+
 [node name="Node3D" type="RigidBody3D"]
+script = ExtResource("1_dmi28")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PrismMesh_0tpx3")
@@ -16,3 +23,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3bpso")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0184937, 0, 0)
 shape = SubResource("BoxShape3D_08kga")
+
+[node name="Aoe" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Aoe"]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0.845497, 0)
+shape = SubResource("CylinderShape3D_n1yik")

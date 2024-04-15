@@ -43,7 +43,7 @@ func init_level():
     summons = level.get_node("%Summons")
     summoner.position = level.get_node("%StartPosition").position
     var goal = level.get_node("%Goal")
-    goal.body_entered.connect(_on_goal_body_entered.bind())
+    goal.body_entered.connect(_on_goal_body_entered)
 
     for i in range(deck_count):
         skill_deck.append(level.skill_db.pick_random())

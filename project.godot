@@ -38,6 +38,12 @@ confirm={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="base"
+3d_physics/layer_2="terrain"
+3d_physics/layer_3="player effects"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
