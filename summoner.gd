@@ -75,9 +75,9 @@ func _normal_movement(delta: float):
     velocity = target_velocity
 
 func play_ufo(p_forward: bool = true):
-    print("play ufo")
     if p_forward:
         %UfoAnimationPlayer.play("spawn")
+        %AudioStreamPlayer.play()
     else:
         %UfoAnimationPlayer.play("despawn")
 
