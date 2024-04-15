@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://btlqbntxyp8n6"]
+[gd_scene load_steps=6 format=3 uid="uid://btlqbntxyp8n6"]
 
 [ext_resource type="Script" path="res://gui/card_template.gd" id="1_45n5q"]
 [ext_resource type="FontFile" uid="uid://d0ut0cxde0twx" path="res://fonts/UglyQua.ttf" id="2_66cpu"]
 [ext_resource type="Texture2D" uid="uid://bb10jeg2ukvka" path="res://gui/assets/card_template.png" id="2_anjlp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fwnl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qx04e"]
 
 [node name="CardTemplate" type="PanelContainer"]
 anchors_preset = 15
@@ -17,7 +19,14 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_5fwnl")
 script = ExtResource("1_45n5q")
 
-[node name="SkillButton" type="TextureButton" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qx04e")
+
+[node name="SkillButton" type="TextureButton" parent="CenterContainer/PanelContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(135, 240)
 layout_mode = 2
@@ -25,12 +34,12 @@ texture_normal = ExtResource("2_anjlp")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 8
 
-[node name="SkillLabel" type="Label" parent="MarginContainer"]
+[node name="SkillLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
@@ -40,17 +49,20 @@ theme_override_font_sizes/font_size = 18
 text = "skill 1"
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 160
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 170
+theme_override_constants/margin_right = 8
 
-[node name="Description" type="Label" parent="MarginContainer2"]
+[node name="Description" type="Label" parent="CenterContainer/PanelContainer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_66cpu")
 theme_override_font_sizes/font_size = 12
-text = "A dragon that blows air upwards.
-"
+text = "A dragon that blows air upwards."
 horizontal_alignment = 1
+autowrap_mode = 2

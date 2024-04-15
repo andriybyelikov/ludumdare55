@@ -25,6 +25,8 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="Hand" type="HBoxContainer" parent="MarginContainer"]
 unique_name_in_owner = true
