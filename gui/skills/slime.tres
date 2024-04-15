@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SummonData" load_steps=4 format=3 uid="uid://hl7b5q7h71lm"]
 
 [ext_resource type="Texture2D" uid="uid://dvo6nry3klkif" path="res://icon.svg" id="1_4w0u5"]
-[ext_resource type="PackedScene" uid="uid://djj1ng4w1asgl" path="res://models/sticky_slime.tscn" id="2_7167d"]
+[ext_resource type="PackedScene" uid="uid://cx16eu30tt0in" path="res://models/sticky_slime.tscn" id="2_7167d"]
 [ext_resource type="Script" path="res://gui/skills/summon_data.gd" id="3_mqdfg"]
 
 [resource]
