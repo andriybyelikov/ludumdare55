@@ -8,7 +8,7 @@
 script = ExtResource("3_mqdfg")
 icon = ExtResource("1_0q6a2")
 name = "Sticky Slime"
-description = ""
+description = "A slimy ball that makes things stick to it."
 model = ExtResource("2_7167d")
 summoning_range = 10
 lifespan = 1

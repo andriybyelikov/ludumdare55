@@ -7,7 +7,7 @@
 script = ExtResource("1_7b852")
 icon = ExtResource("1_sj51t")
 name = "UFO"
-description = ""
+description = "A UFO that teleports the player."
 summoning_range = 10
 lifespan = 0
 effect_range = 0

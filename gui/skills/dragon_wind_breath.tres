@@ -8,7 +8,7 @@
 script = ExtResource("1_3o71l")
 icon = ExtResource("1_jxmx2")
 name = "Wind Dragon"
-description = ""
+description = "A dragon that blows air upwards."
 model = ExtResource("2_eiuwl")
 summoning_range = 15
 lifespan = 1
