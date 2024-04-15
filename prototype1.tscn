@@ -48,8 +48,8 @@ material = SubResource("StandardMaterial3D_my5sx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_43gp2"]
 shader = ExtResource("10_jnetk")
-shader_parameter/r_displacement = 3.0
-shader_parameter/b_displacement = -3.0
+shader_parameter/r_displacement = 2.0
+shader_parameter/b_displacement = -2.0
 shader_parameter/size = 0.877
 shader_parameter/min_lum = 0.196
 shader_parameter/max_lum = 0.585
@@ -69,7 +69,6 @@ size = Vector2(1, 1)
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
 levels = Array[PackedScene]([ExtResource("9_cdyk1"), ExtResource("3_ij3f7"), ExtResource("4_7aqf6"), ExtResource("2_yt6qw")])
-deck_count = 30
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.995396, -0.0706649, 0.0647524, 0, 0.67559, 0.737277, -0.0958458, -0.733883, 0.67248, 0, 20, 40.702)

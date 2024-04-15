@@ -1,9 +1,10 @@
 extends Node
 
 @export var levels: Array[PackedScene] = []
-
-@export var deck_count: int = 3
 @export var hand_count: int = 3
+
+var title_scene = preload("res://tittle_screen.tscn")
+
 var current_level: int = 0
 var level: Node3D
 
@@ -41,12 +42,7 @@ func init_level(level_index: int):
     summons = level.get_node("%Summons")
     summoner.position = level.get_node("%StartPosition").position
     var goal = level.get_node("%Goal")
-
-
     skill_deck = level.skill_db.duplicate()
-    # for i in range(deck_count):
-    #     # skill_deck.append(level.skill_db.pick_random())
-    #     skill_deck.append(level.skill_db.pick_random())
 
     for i in range(min(hand_count, skill_deck.size())):
         var new_skill: SummonData = skill_deck.pop_front()
@@ -161,8 +157,13 @@ func _reset_level():
 
 func _on_goal_body_entered(body:Node3D):
     if body.name == "Summoner":
-        current_level = (current_level + 1) % levels.size()
-        _reset_level()
+        current_level = current_level + 1
+        if current_level >= levels.size():
+            var title = title_scene.instantiate()
+            self.get_tree().get_root().add_child(title)
+            self.queue_free()
+        else:
+            _reset_level()
 
 func _on_level_reset_button_pressed():
     _reset_level()
