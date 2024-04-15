@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvsc4wc2unvfu"]
+[gd_scene load_steps=23 format=3 uid="uid://cvsc4wc2unvfu"]
 
 [ext_resource type="Script" path="res://prototype1.gd" id="1_lysoa"]
 [ext_resource type="PackedScene" uid="uid://bymi4apke5ok2" path="res://summoner.tscn" id="2_aus0f"]
@@ -9,6 +9,7 @@
 [ext_resource type="PlaneMesh" uid="uid://l588oxlatlwa" path="res://materials/marker.tres" id="5_52u2c"]
 [ext_resource type="AudioStream" uid="uid://r2vkwhuvmmih" path="res://music/Contra musas privo boni [oHLkwJ0JNe8].ogg" id="7_vpx5b"]
 [ext_resource type="PackedScene" uid="uid://dahee2l0ueghu" path="res://levels/level1.tscn" id="9_cdyk1"]
+[ext_resource type="Shader" path="res://postprocessing.gdshader" id="10_jnetk"]
 [ext_resource type="FontFile" uid="uid://d0ut0cxde0twx" path="res://fonts/UglyQua.ttf" id="10_qq2a3"]
 [ext_resource type="Texture2D" uid="uid://peinf2c8xh34" path="res://textures/mouse.tres" id="11_2h7gu"]
 
@@ -45,6 +46,14 @@ uv1_scale = Vector3(22.465, 22.465, 22.465)
 [sub_resource type="PlaneMesh" id="PlaneMesh_ihp2u"]
 material = SubResource("StandardMaterial3D_my5sx")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43gp2"]
+shader = ExtResource("10_jnetk")
+shader_parameter/r_displacement = 3.0
+shader_parameter/b_displacement = -3.0
+shader_parameter/size = 0.877
+shader_parameter/min_lum = 0.196
+shader_parameter/max_lum = 0.585
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ki4ax"]
 transparency = 1
 cull_mode = 2
@@ -59,7 +68,7 @@ size = Vector2(1, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-levels = Array[PackedScene]([ExtResource("4_7aqf6"), ExtResource("9_cdyk1"), ExtResource("3_ij3f7"), ExtResource("2_yt6qw")])
+levels = Array[PackedScene]([ExtResource("9_cdyk1"), ExtResource("3_ij3f7"), ExtResource("4_7aqf6"), ExtResource("2_yt6qw")])
 deck_count = 30
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -102,7 +111,19 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 cast_shadow = 0
 mesh = ExtResource("5_52u2c")
 
+[node name="postprocessing" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="postprocessing"]
+material = SubResource("ShaderMaterial_43gp2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="gui_layer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="SummoningGUI" parent="gui_layer" instance=ExtResource("3_lqiq1")]
 unique_name_in_owner = true
