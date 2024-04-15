@@ -1,5 +1,5 @@
 class_name SkillButton
-extends VBoxContainer
+extends Control
 
 signal skill_selected()
 

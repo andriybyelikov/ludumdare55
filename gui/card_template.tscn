@@ -1,26 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://btlqbntxyp8n6"]
+[gd_scene load_steps=5 format=3 uid="uid://btlqbntxyp8n6"]
 
 [ext_resource type="Script" path="res://gui/card_template.gd" id="1_45n5q"]
+[ext_resource type="FontFile" uid="uid://d0ut0cxde0twx" path="res://fonts/UglyQua.ttf" id="2_66cpu"]
 [ext_resource type="Texture2D" uid="uid://bb10jeg2ukvka" path="res://gui/assets/card_template.png" id="2_anjlp"]
 
-[node name="CardTemplate" type="VBoxContainer"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fwnl"]
+
+[node name="CardTemplate" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5fwnl")
 script = ExtResource("1_45n5q")
 
 [node name="SkillButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 160)
+custom_minimum_size = Vector2(135, 240)
 layout_mode = 2
 texture_normal = ExtResource("2_anjlp")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="SkillLabel" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 8
+
+[node name="SkillLabel" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_66cpu")
+theme_override_font_sizes/font_size = 18
 text = "skill 1"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 160
+
+[node name="Description" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_66cpu")
+theme_override_font_sizes/font_size = 12
+text = "A dragon that blows air upwards.
+"
 horizontal_alignment = 1
