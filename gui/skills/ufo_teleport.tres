@@ -10,6 +10,6 @@ icon = ExtResource("1_335p4")
 name = "UFO"
 description = ""
 model = ExtResource("2_saroa")
-summoning_range = 30
+summoning_range = 20
 lifespan = 0
 effect_range = 0
