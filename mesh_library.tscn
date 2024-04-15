@@ -1,18 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://6idl66eruv0k"]
+[gd_scene load_steps=6 format=3 uid="uid://6idl66eruv0k"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_o4d66"]
+[ext_resource type="Texture2D" uid="uid://c0x0450l8fqjr" path="res://blender/dirt_block_DirtBlockMaterial.png" id="1_n5dxa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wf5j"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_n5dxa")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fw8vk"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2.00001, 2.00001, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 6, 0, 4, 0, 0, 0, 2, 0, 6, 0, 3, 0, 6, 0, 2, 0, 3, 0, 7, 0, 6, 0, 7, 0, 4, 0, 6, 0, 7, 0, 5, 0, 4, 0, 5, 0, 3, 0, 1, 0, 5, 0, 7, 0, 3, 0, 1, 0, 2, 0, 0, 0, 1, 0, 3, 0, 2, 0, 5, 0, 0, 0, 4, 0, 5, 0, 1, 0, 0, 0),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 254, 255, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2nf8p"]
+resource_name = "dirt_block_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2.00001, 2.00001, 2),
+"attribute_data": PackedByteArray(170, 170, 0, 0, 0, 0, 255, 255, 85, 85, 84, 85, 85, 85, 0, 0, 84, 85, 169, 170, 0, 0, 84, 85, 85, 85, 169, 170, 0, 0, 169, 170, 85, 85, 0, 0, 0, 0, 169, 170, 170, 170, 170, 170, 0, 0, 0, 0, 170, 170, 84, 85, 85, 85, 255, 255, 170, 170, 255, 255, 85, 85, 84, 85, 85, 85, 84, 85, 170, 170, 170, 170, 85, 85, 84, 85, 85, 85, 169, 170, 85, 85, 255, 255, 0, 0, 84, 85, 170, 170, 84, 85, 85, 85, 169, 170),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(1, 0, 19, 0, 13, 0, 1, 0, 7, 0, 19, 0, 9, 0, 18, 0, 6, 0, 9, 0, 21, 0, 18, 0, 23, 0, 14, 0, 20, 0, 23, 0, 17, 0, 14, 0, 16, 0, 10, 0, 4, 0, 16, 0, 22, 0, 10, 0, 5, 0, 8, 0, 2, 0, 5, 0, 11, 0, 8, 0, 15, 0, 0, 0, 12, 0, 15, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_2wf5j"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 0, 0, 255, 255, 254, 255, 254, 255, 0, 0, 255, 255, 254, 255, 254, 255, 0, 0, 84, 213, 254, 255, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 84, 213, 254, 255, 0, 0, 0, 0, 84, 213, 254, 255, 254, 255, 255, 255, 255, 191, 254, 255, 254, 255, 255, 255, 255, 255, 254, 255, 254, 255, 255, 255, 84, 213, 254, 255, 0, 0, 255, 255, 255, 191, 254, 255, 0, 0, 255, 255, 84, 213, 254, 255, 0, 0, 255, 255, 84, 213, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 255, 255, 255, 191, 0, 0, 254, 255, 255, 255, 255, 255, 0, 0, 254, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 255, 255, 84, 213, 0, 0, 0, 0, 255, 255, 255, 255, 255, 191, 255, 191, 255, 127, 255, 191, 170, 42, 170, 42, 255, 191, 255, 191, 170, 42, 84, 213, 170, 42, 170, 42, 255, 255, 255, 255, 255, 127, 255, 191, 170, 42, 170, 42, 255, 255, 255, 255, 170, 42, 84, 213, 170, 42, 170, 42, 255, 191, 255, 191, 255, 127, 255, 191, 255, 63, 255, 127, 255, 191, 255, 191, 170, 42, 84, 213, 255, 63, 255, 127, 255, 255, 255, 255, 255, 127, 255, 191, 255, 63, 255, 127, 255, 255, 255, 255, 170, 42, 84, 213, 255, 63, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_fw8vk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1036q"]
 
 [node name="Library" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-mesh = SubResource("BoxMesh_o4d66")
+[node name="Dirt" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("ArrayMesh_2nf8p")
+skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Dirt"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt/StaticBody3D"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 shape = SubResource("BoxShape3D_1036q")
