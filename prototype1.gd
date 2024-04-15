@@ -43,7 +43,6 @@ func init_level(level_index: int):
     summoner.position = level.get_node("%StartPosition").position
     var goal = level.get_node("%Goal")
     skill_deck = level.skill_db.duplicate()
-
     for i in range(min(hand_count, skill_deck.size())):
         var new_skill: SummonData = skill_deck.pop_front()
         skill_hand.push_back(new_skill)
@@ -68,7 +67,7 @@ func cancel_summoning():
 func try_refill_hand():
     skill_hand.pop_at(self.current_clicked)
     if skill_deck.size() > 0:
-        var new_summon_skill: SummonData = skill_deck.pop_back()
+        var new_summon_skill: SummonData = skill_deck.pop_front()
         skill_hand.push_back(new_summon_skill)
 
     summon_gui.update_hand(skill_hand)
