@@ -38,6 +38,7 @@ deck_count = 30
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707106, 0.707106, -0.5, -0.612372, 0.612372, 0, 20, 10)
 light_energy = 2.0
 light_indirect_energy = 2.0
+shadow_enabled = true
 
 [node name="Background" type="MeshInstance3D" parent="."]
 transform = Transform3D(210, 0, 0, 0, -9.17939e-06, -210, 0, 210, -9.17939e-06, 0, 0, -4)
