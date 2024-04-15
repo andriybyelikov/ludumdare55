@@ -140,10 +140,10 @@ func _unhandled_input(event):
 
 
 func _process(_delta):
+    var current_position: Vector2 = get_viewport().get_mouse_position()
+    var mouse_world_position = camera.project_position(current_position, camera.position.z)
+    get_node("mouse").position = mouse_world_position
     if summoning:
-        var current_position: Vector2 = get_viewport().get_mouse_position()
-        var mouse_world_position = camera.project_position(current_position, camera.position.z)
-        get_node("aa").position = mouse_world_position
         var material = cast_range.mesh.surface_get_material(0)
         if _is_valid_summon_position(mouse_world_position):
             material.albedo_color = Color(1, 1, 1, 1.0)
