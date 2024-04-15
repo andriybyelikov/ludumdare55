@@ -22,3 +22,4 @@ func update_hand(p_current_hand: Array[SummonData]):
 
 func on_card_clicked(p_which_skill: int):
     card_clicked.emit(p_which_skill)
+    $AudioStreamPlayer.play()

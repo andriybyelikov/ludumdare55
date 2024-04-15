@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://nag40h0wl7bi"]
+[gd_scene load_steps=4 format=3 uid="uid://nag40h0wl7bi"]
 
 [ext_resource type="Script" path="res://gui/cards_gui.gd" id="1_28w8k"]
 [ext_resource type="PackedScene" uid="uid://btlqbntxyp8n6" path="res://gui/card_template.tscn" id="2_2fime"]
+[ext_resource type="AudioStream" uid="uid://dl37ay3k31gu5" path="res://sfx/card_shuffle.ogg" id="3_bm68c"]
 
 [node name="SummoningGui" type="Control"]
 layout_mode = 3
@@ -34,3 +35,7 @@ layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bm68c")
+volume_db = 6.0
