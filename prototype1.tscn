@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvsc4wc2unvfu"]
+[gd_scene load_steps=15 format=3 uid="uid://cvsc4wc2unvfu"]
 
 [ext_resource type="Script" path="res://prototype1.gd" id="1_lysoa"]
 [ext_resource type="PackedScene" uid="uid://bymi4apke5ok2" path="res://summoner.tscn" id="2_aus0f"]
+[ext_resource type="PackedScene" uid="uid://bs3b515ivfe3g" path="res://levels/level4.tscn" id="2_yt6qw"]
 [ext_resource type="PackedScene" uid="uid://dxsi6ao045lvj" path="res://levels/level2.tscn" id="3_ij3f7"]
 [ext_resource type="PackedScene" uid="uid://nag40h0wl7bi" path="res://gui/cards_gui.tscn" id="3_lqiq1"]
 [ext_resource type="PackedScene" uid="uid://2uiukc7rplcq" path="res://levels/level3.tscn" id="4_7aqf6"]
@@ -23,7 +24,7 @@ albedo_color = Color(0.882353, 0, 0.466667, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-levels = Array[PackedScene]([ExtResource("3_ij3f7"), ExtResource("9_cdyk1"), ExtResource("4_7aqf6")])
+levels = Array[PackedScene]([ExtResource("2_yt6qw"), ExtResource("4_7aqf6"), ExtResource("3_ij3f7"), ExtResource("9_cdyk1")])
 deck_count = 30
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -42,7 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
 
 [node name="Camera3D" type="Camera3D" parent="Summoner"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 20)
 current = true
 
 [node name="PlayerAnchor" type="Node3D" parent="Summoner"]
