@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bq0is55r43eop" path="res://blender/staff.glb" id="3_4xg4a"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_by2d7"]
+height = 1.445
+radius = 0.371378
 
 [sub_resource type="Animation" id="Animation_enclt"]
 length = 0.001
@@ -137,7 +139,7 @@ transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
 [node name="staff" parent="Pivot/StaffPivot" instance=ExtResource("3_4xg4a")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.75, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.5768, 0)
 shape = SubResource("CylinderShape3D_by2d7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
