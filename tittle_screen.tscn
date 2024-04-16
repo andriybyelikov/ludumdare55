@@ -139,9 +139,14 @@ _data = {
 shader = ExtResource("6_2mjhc")
 shader_parameter/r_displacement = 1.0
 shader_parameter/b_displacement = -1.0
+shader_parameter/r_displacement_max = 2.0
+shader_parameter/b_displacement_max = -2.0
 shader_parameter/size = 0.877
 shader_parameter/min_lum = 0.196
 shader_parameter/max_lum = 0.585
+shader_parameter/speed = 1.0
+shader_parameter/perdiod = 1
+shader_parameter/duration = 1.0
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -226,7 +231,7 @@ Music: Andriy
 Sound Effects: Andriy"
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13629, 34.5846, 69.1298)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.211, 34.585, 69.13)
 current = true
 
 [node name="Main" type="Node" parent="."]
