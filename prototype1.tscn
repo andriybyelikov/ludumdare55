@@ -46,6 +46,7 @@ uv1_scale = Vector3(22.465, 22.465, 22.465)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ihp2u"]
 material = SubResource("StandardMaterial3D_my5sx")
+orientation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_43gp2"]
 shader = ExtResource("10_jnetk")
@@ -71,6 +72,7 @@ billboard_keep_scale = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_kl3fp"]
 material = SubResource("StandardMaterial3D_ki4ax")
 size = Vector2(1, 1)
+orientation = 2
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
@@ -90,7 +92,7 @@ directional_shadow_fade_start = 0.545
 sky_mode = 1
 
 [node name="Background" type="MeshInstance3D" parent="."]
-transform = Transform3D(210, 0, 0, 0, -9.17939e-06, -210, 0, 210, -9.17939e-06, 0, 0, -4)
+transform = Transform3D(210, 0, 0, 0, 210, 0, 0, 0, 210, 0, 0, -4)
 mesh = SubResource("PlaneMesh_ihp2u")
 
 [node name="Summoner" parent="." instance=ExtResource("2_aus0f")]
@@ -112,7 +114,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14144, 0)
 
 [node name="CastRange" type="MeshInstance3D" parent="Summoner/PlayerAnchor"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 cast_shadow = 0
 mesh = ExtResource("5_52u2c")
 
@@ -173,7 +174,7 @@ debug_shape_thickness = 5
 
 [node name="mouse" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.48607, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48607, -2)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_kl3fp")
 skeleton = NodePath("../Summoner/PlayerAnchor")

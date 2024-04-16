@@ -12,3 +12,4 @@ albedo_texture = ExtResource("1_xqmqw")
 [resource]
 material = SubResource("StandardMaterial3D_7gpiv")
 size = Vector2(1, 1)
+orientation = 2

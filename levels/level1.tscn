@@ -1,9 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://dahee2l0ueghu"]
+[gd_scene load_steps=14 format=3 uid="uid://dahee2l0ueghu"]
 
 [ext_resource type="MeshLibrary" uid="uid://bgmqabvgew36f" path="res://mesh_library.tres" id="1_cxidl"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_ffta1"]
 [ext_resource type="Resource" uid="uid://bpyjuaap5568o" path="res://gui/skills/dragon_wind_breath.tres" id="3_cemqq"]
 [ext_resource type="PackedScene" uid="uid://dq2l26jmf7aip" path="res://levels/goal.tscn" id="5_3384a"]
+[ext_resource type="Texture2D" uid="uid://cyrvj0asaf1qm" path="res://tutorial/basic_controls.png" id="5_w2f66"]
+[ext_resource type="Texture2D" uid="uid://d0lwff2ieaw03" path="res://tutorial/bind_summons_to_this_world.png" id="6_l4767"]
+[ext_resource type="Texture2D" uid="uid://c0h1skugrjt7m" path="res://tutorial/reach_the_end.png" id="7_34sax"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yr33i"]
+albedo_texture = ExtResource("5_w2f66")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8nw4o"]
+material = SubResource("StandardMaterial3D_yr33i")
+size = Vector2(17, 17)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7xew"]
+albedo_texture = ExtResource("6_l4767")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_psrle"]
+material = SubResource("StandardMaterial3D_w7xew")
+size = Vector2(20, 20)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_li33m"]
+albedo_texture = ExtResource("7_34sax")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6taw7"]
+material = SubResource("StandardMaterial3D_li33m")
+size = Vector2(20, 20)
+orientation = 2
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_ffta1")
@@ -28,3 +55,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4804, 4, -2)
 
 [node name="Summons" type="Node3D" parent="."]
 unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 15, -3)
+mesh = SubResource("PlaneMesh_8nw4o")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 15, -3)
+mesh = SubResource("PlaneMesh_psrle")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8487, 29.7531, -2.69163)
+mesh = SubResource("PlaneMesh_6taw7")
