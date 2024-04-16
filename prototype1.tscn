@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://nag40h0wl7bi" path="res://gui/cards_gui.tscn" id="3_lqiq1"]
 [ext_resource type="PackedScene" uid="uid://2uiukc7rplcq" path="res://levels/level3.tscn" id="4_7aqf6"]
 [ext_resource type="PlaneMesh" uid="uid://l588oxlatlwa" path="res://materials/marker.tres" id="5_52u2c"]
-[ext_resource type="PackedScene" uid="uid://bicwfhfab3kn8" path="res://levels/level5.tscn" id="6_donlo"]
+[ext_resource type="PackedScene" path="res://levels/level6.tscn" id="6_vqe0c"]
 [ext_resource type="PackedScene" uid="uid://dahee2l0ueghu" path="res://levels/level1.tscn" id="9_cdyk1"]
 [ext_resource type="Shader" path="res://postprocessing.gdshader" id="10_jnetk"]
 [ext_resource type="FontFile" uid="uid://d0ut0cxde0twx" path="res://fonts/UglyQua.ttf" id="10_qq2a3"]
@@ -76,7 +76,7 @@ orientation = 2
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lysoa")
-levels = Array[PackedScene]([ExtResource("9_cdyk1"), ExtResource("3_ij3f7"), ExtResource("4_7aqf6"), ExtResource("2_yt6qw"), ExtResource("6_donlo")])
+levels = Array[PackedScene]([ExtResource("9_cdyk1"), ExtResource("3_ij3f7"), ExtResource("4_7aqf6"), ExtResource("2_yt6qw"), ExtResource("6_vqe0c")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.995396, -0.0706649, 0.0647524, 0, 0.67559, 0.737277, -0.0958458, -0.733883, 0.67248, 0, 20, 40.702)
