@@ -61,9 +61,9 @@ func _normal_movement(delta: float):
         $Pivot.rotation.y = + PI / 6
 
     # falling
-    if is_on_ceiling():
-        target_velocity.y = 0
-    elif not is_on_floor():
+    if not is_on_floor():
+        if is_on_ceiling():
+            target_velocity.y = 0
         target_velocity.y -= fall_acceleration * delta
     # jumping
     elif is_on_floor() and Input.is_action_just_pressed("jump"):
