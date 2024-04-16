@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://nag40h0wl7bi" path="res://gui/cards_gui.tscn" id="3_lqiq1"]
 [ext_resource type="PackedScene" uid="uid://2uiukc7rplcq" path="res://levels/level3.tscn" id="4_7aqf6"]
 [ext_resource type="PlaneMesh" uid="uid://l588oxlatlwa" path="res://materials/marker.tres" id="5_52u2c"]
-[ext_resource type="PackedScene" path="res://levels/level6.tscn" id="6_vqe0c"]
+[ext_resource type="PackedScene" uid="uid://crcqtv6v3g2rl" path="res://levels/level6.tscn" id="6_vqe0c"]
 [ext_resource type="PackedScene" uid="uid://dahee2l0ueghu" path="res://levels/level1.tscn" id="9_cdyk1"]
 [ext_resource type="Shader" path="res://postprocessing.gdshader" id="10_jnetk"]
 [ext_resource type="FontFile" uid="uid://d0ut0cxde0twx" path="res://fonts/UglyQua.ttf" id="10_qq2a3"]
@@ -50,8 +50,8 @@ orientation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_43gp2"]
 shader = ExtResource("10_jnetk")
-shader_parameter/r_displacement = 2.0
-shader_parameter/b_displacement = -2.0
+shader_parameter/r_displacement = 1.2
+shader_parameter/b_displacement = -1.2
 shader_parameter/r_displacement_max = 11.0
 shader_parameter/b_displacement_max = -15.0
 shader_parameter/size = 0.877
